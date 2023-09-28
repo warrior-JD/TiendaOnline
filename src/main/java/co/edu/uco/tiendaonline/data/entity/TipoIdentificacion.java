@@ -21,6 +21,8 @@ public final class TipoIdentificacion {
 		return new TipoIdentificacion(id,codigo,nombre,estado);
 	}
 
+	
+	
 	private final void setId(UUID id) {
 		this.id = id;
 	}
