@@ -10,7 +10,7 @@ import co.edu.uco.tiendaonline.data.entity.support.NumeroTelefonoMovilClienteEnt
 public class ClienteEntity {
 
 	private UUID  id;
-	private TipoIdentificacion tipoidentificacion;
+	private TipoIdentificacionEntity tipoidentificacion;
 	private String identificacion;
 	private NombreCompletoClienteEntity nombreCompleto ;
 	private CorreoElectronicoClienteEntity correoElectronico;
@@ -19,7 +19,7 @@ public class ClienteEntity {
 
 
 
-	private ClienteEntity(final UUID id,final TipoIdentificacion tipoidentificacion, final String identificacion, final NombreCompletoClienteEntity nombreCompleto , final CorreoElectronicoClienteEntity correoElectronico , final NumeroTelefonoMovilClienteEntity numeroCompleto, final Date fechaNacimiento) {
+	private ClienteEntity(final UUID id,final TipoIdentificacionEntity tipoidentificacion, final String identificacion, final NombreCompletoClienteEntity nombreCompleto , final CorreoElectronicoClienteEntity correoElectronico , final NumeroTelefonoMovilClienteEntity numeroCompleto, final Date fechaNacimiento) {
 		super();
 	
 		setId(id);
@@ -33,7 +33,7 @@ public class ClienteEntity {
 		
 	}
 	
-	public static final ClienteEntity crear(final UUID id,final TipoIdentificacion tipoidentificacion, final String identificacion ,final NombreCompletoClienteEntity nombreCompleto,final CorreoElectronicoClienteEntity correoElectronico, final NumeroTelefonoMovilClienteEntity numeroCompleto, final Date fechaNacimiento) {
+	public static final ClienteEntity crear(final UUID id,final TipoIdentificacionEntity tipoidentificacion, final String identificacion ,final NombreCompletoClienteEntity nombreCompleto,final CorreoElectronicoClienteEntity correoElectronico, final NumeroTelefonoMovilClienteEntity numeroCompleto, final Date fechaNacimiento) {
 		return new ClienteEntity(id, tipoidentificacion, identificacion,nombreCompleto ,
 				 correoElectronico, numeroCompleto, fechaNacimiento);
 	}
@@ -46,7 +46,7 @@ public class ClienteEntity {
 
 
 
-	private final void setTipoidentificacion(TipoIdentificacion tipoidentificacion) {
+	private final void setTipoidentificacion(TipoIdentificacionEntity tipoidentificacion) {
 		this.tipoidentificacion = tipoidentificacion;
 	}
 
@@ -82,7 +82,7 @@ public class ClienteEntity {
 
 
 
-	public final TipoIdentificacion getTipoidentificacion() {
+	public final TipoIdentificacionEntity getTipoidentificacion() {
 		return tipoidentificacion;
 	}
 
