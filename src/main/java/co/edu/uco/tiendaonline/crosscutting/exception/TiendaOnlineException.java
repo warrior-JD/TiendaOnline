@@ -19,22 +19,23 @@ public class TiendaOnlineException extends RuntimeException {
 	
 	
 	
-	protected TiendaOnlineException(final LugarException lugar, final Throwable exceptionRaiz, final String mensajeUsuario,
-			final String mensajeTecnico) {
-		
+	protected TiendaOnlineException(final LugarException lugar, final Throwable excepcionRaiz,
+			final String mensajeUsuario, final String mensajeTecnico) {
+		super(mensajeTecnico, excepcionRaiz);
 		setLugar(lugar);
-		setExceptionRaiz(exceptionRaiz);
+		setExcepcionRaiz(excepcionRaiz);
 		setMensajeUsuario(mensajeUsuario);
 		setMensajeTecnico(mensajeTecnico);
-		
 	}
 	
 	private final void setLugar(final LugarException lugar) {
 		this.lugar = UtilObjeto.obtenerValorDefecto(lugar, LugarException.GENERAL);
 	}
-	private final void setExceptionRaiz(final Throwable exceptionRaiz) {
-		this.exceptionRaiz = UtilObjeto.obtenerValorDefecto(exceptionRaiz, new Exception());
+	private final void setExcepcionRaiz(final Throwable excepcionRaiz) {
+		setTieneExcepcionRaiz(!UtilObjeto.esNulo(excepcionRaiz));
+		this.exceptionRaiz = UtilObjeto.obtenerValorDefecto(excepcionRaiz, new Exception());
 	}
+	
 	private final void setMensajeUsuario(final String mensajeUsuario) {
 		this.mensajeUsuario = Utiltexto.aplicarTrim(mensajeUsuario);
 	}

@@ -35,11 +35,11 @@ public final class Mensaje {
 	private final void setCodigo(final CodigoMensaje codigo) {
 		
 		if (UtilObjeto.esNulo(codigo)) {
-			var mensajeUsuario=CatalogoMensajes.obtenerMensaje(CodigoMensaje.M000004).getContenido();
-			var mensajeTecnico =CatalogoMensajes.obtenerMensaje(CodigoMensaje.M000003).getContenido();
-			throw CrossCuttingTiendaOnlineException.crear(mensajeTecnico, mensajeUsuario);
+			var mensajeUsuario = CatalogoMensajes.obtenerContenidoMensaje(CodigoMensaje.M0000000004);
+			var mensajeTecnico = CatalogoMensajes.obtenerContenidoMensaje(CodigoMensaje.M0000000001);
+			throw CrossCuttingTiendaOnlineException.crear(mensajeUsuario, mensajeTecnico);
 		}
-		this.codigo = UtilObjeto.obtenerValorDefecto(codigo, null);
+		this.codigo = codigo;
 	}
 
 
