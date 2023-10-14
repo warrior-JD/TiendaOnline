@@ -33,7 +33,7 @@ public abstract class DAOFactory {
 		}
 	}
 	
-	protected abstract void abrirConexion();
+	public abstract void abrirConexion();
 	
 	public abstract void cerrarConexion();
 	
