@@ -14,25 +14,27 @@ public final class ClienteDTO {
 	
 	
 	private UUID  id;
-	private TipoIdentificacionEntity tipoidentificacion;
-	private String identificacion;
-	private NombreCompletoClienteEntity nombreCompleto ;
-	private CorreoElectronicoClienteEntity correoElectronico;
-	private NumeroTelefonoMovilClienteEntity numeroCompleto;
+	private TipoIdentificacionDTO tipoidentificacion;
+	private NombreCompletoClienteDTO nombreCompleto;
+	private CorreoElectronicoClienteDTO correoelectronico;
+	private NumeroTelefonoMovilClienteDTO numeroCompleto;
 	private Date fechaNacimiento;
+	private String identificacion;
 	
 	
 
-	private ClienteDTO() {
-		super();
 	
-		setId(id);
+	public ClienteDTO() {
+		
+		setId(id); //TODO: ¿como lograr que por defecto se asigne UUID que sea todo con ceros?
 		setTipoidentificacion(new TipoIdentificacionDTO());
 		setIdentificacion(Utiltexto.VACIO);
-		setNombreCompleto(new NombreCompletoDTO());
-		setCorreoElectronico(correoElectronico);
-		setNumeroCompleto(numeroCompleto);
-		setFechaNacimiento(fechaNacimiento);
+		setNombreCompleto(new NombreCompletoClienteDTO());
+		setCorreoelectronico(new CorreoElectronicoClienteDTO());
+		setNumeroCompleto(new NumeroTelefonoMovilClienteDTO());
+		setFechaNacimiento(fechaNacimiento); //TODO: ¿como lograr que por defecto se asigne una fecha por defecto, que no sea valida, y que sea facilmente de identificar?
+		
+		
 		
 		
 	}
@@ -41,28 +43,30 @@ public final class ClienteDTO {
 	
 	
 	
-	
-	private ClienteDTO(final UUID id,final TipoIdentificacionEntity tipoidentificacion, final String identificacion, final NombreCompletoClienteEntity nombreCompleto , final CorreoElectronicoClienteEntity correoElectronico , final NumeroTelefonoMovilClienteEntity numeroCompleto, final Date fechaNacimiento) {
-		super();
-	
+
+	public ClienteDTO(final UUID id, final TipoIdentificacionDTO tipoidentificacion, final NombreCompletoClienteDTO nombreCompleto,
+			final CorreoElectronicoClienteDTO correoelectronico, final NumeroTelefonoMovilClienteDTO numeroCompleto,
+			final Date fechaNacimiento, final String identificacion) {
+		setCorreoelectronico(null);
+		setFechaNacimiento(fechaNacimiento);
 		setId(id);
-		setTipoidentificacion(tipoidentificacion);
 		setIdentificacion(identificacion);
-		setNombreCompleto(nombreCompleto);
-		setCorreoElectronico(correoElectronico);
 		setNumeroCompleto(numeroCompleto);
-		setFechaNacimiento(fechaNacimiento);
-		
+		setTipoidentificacion(tipoidentificacion);
 		
 	}
 	
-	public static final ClienteDTO crear(final UUID id,final TipoIdentificacionEntity tipoidentificacion, final String identificacion ,final NombreCompletoClienteEntity nombreCompleto,final CorreoElectronicoClienteEntity correoElectronico, final NumeroTelefonoMovilClienteEntity numeroCompleto, final Date fechaNacimiento) {
-		return new ClienteDTO(id, tipoidentificacion, identificacion,nombreCompleto ,
-				 correoElectronico, numeroCompleto, fechaNacimiento);
-	}
+	public static final ClienteDTO crear(final UUID id, final TipoIdentificacionDTO tipoidentificacion, final NombreCompletoClienteDTO nombreCompleto,
+			final CorreoElectronicoClienteDTO correoelectronico, final NumeroTelefonoMovilClienteDTO numeroCompleto,
+			final Date fechaNacimiento, final String identificacion) {
+		return new ClienteDTO(id, tipoidentificacion, nombreCompleto, correoelectronico, numeroCompleto, fechaNacimiento, identificacion);
+				
+		
+		}
 	
 	
 	
+
 
 
 
@@ -72,68 +76,83 @@ public final class ClienteDTO {
 	public final UUID getId() {
 		return id;
 	}
-
-	public final ClienteDTO setId(UUID id) {
-	
-		this.id = id;
-		return this;
-	}
-
-	public final TipoIdentificacionEntity getTipoidentificacion() {
+	public final TipoIdentificacionDTO getTipoidentificacion() {
 		return tipoidentificacion;
 	}
-
-	public final ClienteDTO setTipoidentificacion(TipoIdentificacionEntity tipoidentificacion) {
-		this.tipoidentificacion = tipoidentificacion;
-		return this;
+	
+	public final NombreCompletoClienteDTO getNombreCompleto() {
+		return nombreCompleto;
 	}
-
+	
+	public final CorreoElectronicoClienteDTO getCorreoelectronico() {
+		return correoelectronico;
+	}
+	
+	public final NumeroTelefonoMovilClienteDTO getNumeroCompleto() {
+		return numeroCompleto;
+	}
+	
+	public final Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+	
+	
+	
+	
 	public final String getIdentificacion() {
 		return identificacion;
 	}
 
-	public final ClienteDTO setIdentificacion(String identificacion) {
-		this.identificacion = identificacion;
+
+
+
+
+
+	public final void setId(final UUID id) {
+		this.id = id;
+	}
+	public final  ClienteDTO setTipoidentificacion(final TipoIdentificacionDTO tipoidentificacion) {
+		this.tipoidentificacion = tipoidentificacion;
 		return this;
 	}
-
-	public final NombreCompletoClienteEntity getNombreCompleto() {
-		return nombreCompleto;
-	}
-
-	public final ClienteDTO setNombreCompleto(NombreCompletoClienteEntity nombreCompleto) {
+	
+	
+	
+	
+	public final ClienteDTO setNombreCompleto(final NombreCompletoClienteDTO nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
 		return this;
 	}
-
-	public final CorreoElectronicoClienteEntity getCorreoElectronico() {
-		return correoElectronico;
-	}
-
-	public final ClienteDTO setCorreoElectronico(CorreoElectronicoClienteEntity correoElectronico) {
-		this.correoElectronico = correoElectronico;
+	
+	
+	
+	public final  ClienteDTO setCorreoelectronico(final CorreoElectronicoClienteDTO correoelectronico) {
+		this.correoelectronico = correoelectronico;
 		return this;
 	}
-
-	public final NumeroTelefonoMovilClienteEntity getNumeroCompleto() {
-		return numeroCompleto;
-	}
-
-	public final ClienteDTO setNumeroCompleto(NumeroTelefonoMovilClienteEntity numeroCompleto) {
+	
+	
+	public final ClienteDTO setNumeroCompleto(final NumeroTelefonoMovilClienteDTO numeroCompleto) {
 		this.numeroCompleto = numeroCompleto;
 		return this;
 	}
-
-	public final Date getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public final ClienteDTO setFechaNacimiento(Date fechaNacimiento) {
+	
+	
+	
+	public final ClienteDTO setFechaNacimiento(final Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 		return this;
 	}
 
-	
+
+
+
+
+
+	public final ClienteDTO setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
+return this;
+	}
 	
 	
 }
