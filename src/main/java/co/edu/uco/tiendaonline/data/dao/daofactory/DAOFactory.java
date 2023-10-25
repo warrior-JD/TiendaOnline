@@ -10,26 +10,21 @@ public abstract class DAOFactory {
 	
 	
 	public static final DAOFactory obtenerDAOFactory (final TipoDAOFactory factoria) {
-		
 		switch (factoria) {
-		
-		case SQLSERVER: {
-			return new SQLServerDAOFactory();
+		case SQLSERVER:{
+			return new SQLServerDAOFactory(); 
 		}
-		
-		case MYSQL:{
-			return new RuntimeErrorException("factoria no soportada");
-		}
-		
 		case POSTGRESQL:{
-			return new RuntimeErrorException("factoria no soportada");
+			throw new RuntimeException("Factoria no soportada"); 
 		}
-		
+		case MYSQL:{
+			throw new RuntimeException("Factoria no soportada"); 
+		}
 		case ORACLE:{
-			return new RuntimeErrorException("factoria no soportada");
+			throw new RuntimeException("Factoria no soportada"); 
 		}
 		default:
-			throw new RuntimeErrorException("factoria no soportada");
+			throw new  RuntimeException("Factoria no soportada");
 		}
 	}
 	
@@ -41,10 +36,11 @@ public abstract class DAOFactory {
 	
 	public abstract void confirmarTransaccion();
 	
-	public abstract void cancelarTransaccion();
+	public abstract void cancelarTransaccion(); 
 	
-	public abstract ClienteDAO  obtenerClienteDAO();
+	public abstract ClienteDAO obtenerClienteDAO();
 	
-	public abstract TipoIdentificacionDAO obtenerTipoIdentificacionDAO();
+	public abstract TipoIdentificacionDAO obtenerTipoIdentificacionDAO ();
+
 
 }

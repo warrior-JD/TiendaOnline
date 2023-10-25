@@ -6,114 +6,70 @@ import java.util.UUID;
 import co.edu.uco.tiendaonline.data.entity.support.CorreoElectronicoClienteEntity;
 import co.edu.uco.tiendaonline.data.entity.support.NombreCompletoClienteEntity;
 import co.edu.uco.tiendaonline.data.entity.support.NumeroTelefonoMovilClienteEntity;
+import co.edu.uco.tiendaonline.service.domain.CorreoElectronicoClienteDomain;
+import co.edu.uco.tiendaonline.service.domain.NombreCompletoClienteDomain;
+import co.edu.uco.tiendaonline.service.domain.NumeroTelefonoMovilClienteDomain;
+import co.edu.uco.tiendaonline.service.domain.TipoIdentificacionDomain;
 
 public class ClienteEntity {
 
-	private UUID  id;
-	private TipoIdentificacionEntity tipoidentificacion;
+	private UUID id;
+	private TipoIdentificacionEntity tipoIdentificacion;
 	private String identificacion;
-	private NombreCompletoClienteEntity nombreCompleto ;
+	private NombreCompletoClienteEntity nombreCompleto;
 	private CorreoElectronicoClienteEntity correoElectronico;
-	private NumeroTelefonoMovilClienteEntity numeroCompleto;;
-	private Date fechaNacimiento;
-
-
-
-	private ClienteEntity(final UUID id,final TipoIdentificacionEntity tipoidentificacion, final String identificacion, final NombreCompletoClienteEntity nombreCompleto , final CorreoElectronicoClienteEntity correoElectronico , final NumeroTelefonoMovilClienteEntity numeroCompleto, final Date fechaNacimiento) {
-		super();
-	
+	private NumeroTelefonoMovilClienteEntity numeroTelefonoMovil;
+	private ClienteEntity(final UUID id, final TipoIdentificacionEntity tipoIdentificacion, final String identificacion, final NombreCompletoClienteEntity nombreClienteEntity, final CorreoElectronicoClienteEntity correoClienteEntity, final NumeroTelefonoMovilClienteEntity numeroTelefonoMovilClienteEntity) {
+		
 		setId(id);
-		setTipoidentificacion(tipoidentificacion);
+		setTipoIdentificacion(tipoIdentificacion);
 		setIdentificacion(identificacion);
-		setNombreCompleto(nombreCompleto);
-		setCorreoElectronico(correoElectronico);
-		setNumeroCompleto(numeroCompleto);
-		setFechaNacimiento(fechaNacimiento);
-		
+		setNombreCompleto(nombreClienteEntity);
+		setCorreoElectronico(correoClienteEntity);
+		setNumeroTelefonoMovil(numeroTelefonoMovilClienteEntity);
 		
 	}
-	
-	public static final ClienteEntity crear(final UUID id,final TipoIdentificacionEntity tipoidentificacion, final String identificacion ,final NombreCompletoClienteEntity nombreCompleto,final CorreoElectronicoClienteEntity correoElectronico, final NumeroTelefonoMovilClienteEntity numeroCompleto, final Date fechaNacimiento) {
-		return new ClienteEntity(id, tipoidentificacion, identificacion,nombreCompleto ,
-				 correoElectronico, numeroCompleto, fechaNacimiento);
+	public static final ClienteEntity crear (final UUID id, final TipoIdentificacionDomain tipoIdentificacion, final String identificacion, final NombreCompletoClienteDomain nombreCompletoCliente, final CorreoElectronicoClienteDomain correoElectronicoCliente, final NumeroTelefonoMovilClienteDomain numeroTelefonoMovilCliente) {
+		return new ClienteEntity (id, null, identificacion, null, null, null);
 	}
-
-
-
 	private final void setId(UUID id) {
 		this.id = id;
 	}
-
-
-
-	private final void setTipoidentificacion(TipoIdentificacionEntity tipoidentificacion) {
-		this.tipoidentificacion = tipoidentificacion;
+	private final void setTipoIdentificacion(TipoIdentificacionEntity tipoIdentificacion) {
+		this.tipoIdentificacion = tipoIdentificacion;
 	}
-
-	private void setIdentificacion(String identificacion) {
+	private final void setIdentificacion(String identificacion) {
 		this.identificacion = identificacion;
 	}
 
-
-	private final void setNombreCompleto(NombreCompletoClienteEntity nombreCompleto) {
+	public final void setNombreCompleto(NombreCompletoClienteEntity nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
 	}
-
-	private final void setCorreoElectronico(CorreoElectronicoClienteEntity correoElectronico) {
-		this.correoElectronico = correoElectronico;
-	}
-
-	
-
-
-	private final void setNumeroCompleto(NumeroTelefonoMovilClienteEntity numeroCompleto) {
-		this.numeroCompleto = numeroCompleto;
-	}
-	
-	
-
-	private final void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
-	public final UUID getId() {
-		return id;
-	}
-
-
-
-	public final TipoIdentificacionEntity getTipoidentificacion() {
-		return tipoidentificacion;
-	}
-
-
-	public final NombreCompletoClienteEntity getNombreCompleto() {
-		return nombreCompleto;
-	}
-
 	public final CorreoElectronicoClienteEntity getCorreoElectronico() {
 		return correoElectronico;
 	}
-
-	public final NumeroTelefonoMovilClienteEntity getNumeroCompleto() {
-		return numeroCompleto;
+	private final void setCorreoElectronico(CorreoElectronicoClienteEntity correoElectronico) {
+		this.correoElectronico = correoElectronico;
 	}
-
-	public String getIdentificacion() {
+	public final NumeroTelefonoMovilClienteEntity getNumeroTelefonoMovil() {
+		return numeroTelefonoMovil;
+	}
+	private final void setNumeroTelefonoMovil(NumeroTelefonoMovilClienteEntity numeroTelefonoMovil) {
+		this.numeroTelefonoMovil = numeroTelefonoMovil;
+	}
+	public final UUID getId() {
+		return id;
+	}
+	public final TipoIdentificacionEntity getTipoIdentificacion() {
+		return tipoIdentificacion;
+	}
+	public final String getIdentificacion() {
 		return identificacion;
 	}
-
-	public final Date getFechaNacimiento() {
-		return fechaNacimiento;
+	public final NombreCompletoClienteEntity getNombreCompleto() {
+		return nombreCompleto;
 	}
 	
-	
 
-	
-
-	
-	
-	
-	
 	
 }
